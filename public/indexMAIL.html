@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>отправка почты</title>
+    <link rel="stylesheet" href="./styleMAIL.css" />
+  </head>
+  <body>
+    <form id="feedback-form">
+      <p>Отправка данных (вместе с рассчетами о пожарной системе)</p>
+      <label for="name">Имя:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">почта:</label>
+      <input type="mail" id="email" name="email" required />
+
+      <label for="phone">Телефон:</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="message">Сообщение:</label>
+      <textarea id="message" rows="10" name="message" required></textarea>
+      
+      <!-- <label for="info">Информация с заявки:</label>
+      <input type="inf" id="info" name="info"  /> -->
+
+
+
+      <button type="submit">Отправить</button>
+    </form>
+    <script src="./scriptMAIL.js"></script>
+    <script>
+          // var Chekbox_ = localStorage.getItem('CheckBoxStatus').toString
+          // var m_area_ = localStorage.getItem('m_area_value').toString
+          // var wrks_ = localStorage.getItem('wrks_value').toString
+          // var hrs_ = localStorage.getItem('hrs_value').toString
+          // var snsrs_ = localStorage.getItem('snsrs_value').toString
+          // var total_ = localStorage.getItem('total_value').toString
+    </script>
+  </body>
+</html>

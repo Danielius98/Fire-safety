@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Информация о пожарах</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+			}
+			.image{
+				margin: 0 10%;
+			}
+			.container {
+				width: 80%;
+				margin: auto;
+			}
+			header,
+			footer {
+				text-align: center;
+				padding: 1em;
+				background-color: #ffcccb;
+			}
+			main {
+				margin: 2em 0;
+			}
+			.fire-info {
+				background-color: #ffeeee;
+				padding: 1em;
+				border-radius: 5px;
+				margin-bottom: 1em;
+			}
+			h1 {
+				color: #cc0000;
+			}
+			footer p {
+				font-size: 0.8em;
+			}
+			#navbar {
+				position: fixed; /* Или используйте position: sticky; если нужен этот эффект */
+				top: 0; /* Расположение элемента вверху страницы */
+				left: 0; /* Расположение элемента слева от страницы */
+				width: 100%; /* Ширина элемента равна 100% страницы */
+				background: rgb(255, 255, 255); /* Полупрозрачный белый фон */
+				z-index: 99; /* Убедитесь, что навигационная панель находится над другим содержимым */
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Добавление тени для лучшей видимости на разном фоне */
+				padding: 10px 0; /* Добавление отступов сверху и снизу */
+			}
+
+			#navbar a {
+				color: #000; /* Цвет текста ссылок */
+				text-decoration: none; /* Убираем подчёркивание текста */
+				padding: 0 15px; /* Добавление отступов вокруг текста для удобства клика */
+				display: inline-block; /* Элементы будут находиться на одной линии */
+			}
+
+			#navbar a:hover {
+				background: rgba(96, 241, 169, 0.75); /* При наведении ссылки становятся менее прозрачными */
+			}
+
+		</style>
+		<script>
+			
+			function checkInputsAndRedirect() {
+				// var area = document.getElementById('measured_area').value
+				// var work = document.getElementById('workers').value
+				
+				var total_check = localStorage.getItem('total_value')
+
+				//Сохранение локально
+				//localStorage.setItem('CheckBoxStatus', document.getElementById('username').value)
+  			//localStorage.setItem('Pas', document.getElementById('password').value)
+
+				if (total_check) { //if (area && work ) {
+					// Если поля заполнены, переходим на index3.html
+					window.location.href = 'indexMAIL.html' //index3.html изначально
+				} else {
+					// Если нет, выводим сообщение об ошибке
+					alert('Пожалуйста, заполните все поля услуг и произведите рассчет.')
+				}
+			}
+		</script>
+	</head>
+	<nav id="navbar">
+		<a href="#start_info">Пожарные извещатели</a>
+  	<a href="#heat_info">Тепловые извещатели</a>
+  	<a href="#heat_line_info">Линейный тепловой извещатель</a>
+		<a href="#smoke_info">Дымовой пожарные извещатели</a>
+  	<a href="#handle_info">Извещатели пожарные ручные</a>
+		<a href="#video_info">Видео с информацией</a>
+	</nav>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Борьба с пожарами</h1>
+			</header>
+			
+			
+			<main>
+			
+				<div class="fire-info">
+					<h2 id="start_info" >Пожарные извещатели?</h2>
+					<p>
+						Пожарный извещатель  –  техническое устройство, входящее в состав систем ОПС, предназначенное для своевременного обнаружения и информирования в случае возникновения пожара и его сопутствующих факторов.
+					</p>
+				</div>
+				<img class="image"  src="sensors.jpg" alt="Модели сенсоров">
+
+				<div class="fire-info">
+					<h2 id="heat_info">Тепловые извещатели</h2>
+					<p>
+						Тепловые пожарные извещатели или тепловые датчики - предназначены для обнаружения в радиусе своего действия источников возгорания, и подачи сигнала тревоги на приемно-контрольный прибор. 
+					</p>
+				</div>
+				<img class="image"  src="heat.PNG" alt="Тепловой извещатель">
+
+				<div class="fire-info">
+					<h2 id="heat_line_info">Линейный тепловой извещатель</h2>
+					<p>
+						Линейный тепловой извещатель (термокабель) представляет собой кабель, который позволяет обнаружить источник нагрева в любом месте на всём своем протяжении.
+					</p>
+				</div>
+				<img class="image"  src="heat_line.PNG" alt="Линейный тепловой извещатель">
+
+				<div class="fire-info">
+					<h2 id="smoke_info">Дымовые пожарные извещатели</h2>
+					<p>
+						Дымовые модели извещателей оповещают о пожаре в том случае, если в окружающей среде резко возрастает концентрация дымовых частиц.
+					</p>
+					<p>Дым, как совокупность частиц, имеет разные характеристик и зависимости от его типа - поэтому, есть несколько типов дымовых пожарных извещателей:</p>
+				</div>
+				<img class="image"  src="smoke_sens.PNG" alt="Дымовой пожарный извещатель">
+
+				<div class="fire-info">
+					<h2 id="handle_info">Извещатели пожарные ручные</h2>
+					<p>
+						Извещатель пожарный ручной является обязательным компонентом любой системы пожарной сигнализации.
+					</p>
+					<p>
+						Его назначение - принудительная подача сигнала о пожаре при его обнаружении персоналом здания (Возможно, даже раньше, чем это сделает автоматика).
+					</p>
+				</div>
+				<img class="image"  src="handle_sens.PNG" alt="Ручной пожарный извещатель">
+
+
+				<div class="fire-info">
+					<h2 id="video_info">Видео с информацией</h2>
+					<p>
+						Нормы установки систем пожарной сигнализации. Требования к установке пожарных извещателей
+					</p>
+				</div>
+
+				<div class="container">
+						<div class="video">
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/UriVHcssYes?controls=0&amp;start=7;autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</div>
+				</div>
+			
+				<div class="fire-info">
+					<h2>Что такое пожар?</h2>
+					<p>
+						Пожар — это неконтролируемое горение, которое причиняет урон живым
+						существам, имуществу, природе и окружающей среде.
+					</p>
+				</div>
+
+				<div class="fire-info">
+					<h2>Причины возникновения пожаров</h2>
+					<p>
+						Пожары могут возникать по различным причинам, включая неосторожное
+						обращение с огнём, удары молнии, поджоги, аварии на производствах и
+						природные факторы как засуха.
+					</p>
+				</div>
+				<div class="fire-info">
+					<h2>Как предотвратить пожар?</h2>
+					<ul>
+						<li>Не оставляйте без присмотра открытые источники огня.</li>
+						<li>
+							Используйте электроприборы согласно инструкциям безопасности.
+						</li>
+						<li>
+							Храните легковоспламеняющиеся материалы в недоступных для детей и
+							защищённых местах.
+						</li>
+						<li>Установите в доме дымовые датчики.</li>
+					</ul>
+				</div>
+				<div class="fire-info">
+					<h2>Узнать больше о пожарах</h2>
+					<p>
+						Для получения более подробной информации о пожарах и мерах
+						безопасности перейдите по
+						<a href="https://вдпо.рф/enc/pozhar" target="_blank">ссылке</a>.
+					</p>
+				</div>
+				<div id="calculator">
+					<p>Услуги по замерам:</p>
+					<input
+						type="text"
+						id="measured_area"
+						placeholder="Замеряемая площадь(м^2)"
+					/>
+
+					<p>Установка за счёт фирмы:</p>
+					<input type="text" id="workers" placeholder="Количество работников" />
+
+					<input type="text" id="hours" placeholder="Количество часов" />
+
+					<p>Установка датчиков:</p>
+					<input type="text" id="sensors" placeholder="Количество датчиков" />
+					<!-- <input type="text" id="tests" placeholder="Количество испытаний" /> -->
+
+					<p>Провести испытание системы?</p>
+					<p><input type="checkbox" id="CheckBox" > </p>
+
+					<p>Установка с материалами?</p>
+					<p><input type="checkbox" id="CheckBox_materials"> </p>
+
+					
+
+					<p></p>
+					<button onclick="calculateTotal()">Рассчитать</button>
+
+					<p id="total">Общая стоимость: <span></span></p>
+
+					<p></p>
+					<p>
+						Если вы приняли решение, то вы можете отправить заявку на почту:
+					</p>
+					<p></p>
+
+					<button type="submit" class="btn" onclick="checkInputsAndRedirect();">
+						Отправить заявку
+					</button>
+				</div>
+				<script src="scriptCALC.js"></script>
+			</main>
+			<footer>
+				<p id = "podval">&copy; 2024 Информация о пожарах</p>
+				<p>Для консультации звоните по номеру: + 7 960 338 45 90</p>
+			</footer>
+		</div>
+	</body>
+</html>

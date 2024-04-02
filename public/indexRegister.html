@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Form login and password</title>
+		<link rel="stylesheet" href="style.css" />
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<script>
+			function checkInputsAndRedirect() {
+				console.log("Дошло0");
+				var username = document.getElementById('username').value
+				var password = document.getElementById('password').value
+				if (username && password) {
+					// Если поля заполнены, переходим на index2.html
+					
+
+					////
+					setTimeout(function () {
+						window.location.href = 'index.html'
+					}, 3000)
+					
+					//window.location.href = 'index.html'
+				} else {
+					// Если нет, выводим сообщение об ошибке
+					alert('Пожалуйста, заполните поля имени пользователя и пароля.')
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<form id="registrationForm" action="" onsubmit="return false;"> <!-- убрать все кроме id?-->
+				<h1>Регистрация</h1>
+
+				<div class="input-box">
+					<input
+						type="text"
+						id="username"
+						placeholder="Имя пользователя"
+						required
+					/>
+					<i class="bx bx-user"></i>
+				</div>
+
+				<div class="input-box">
+					<input type="password" id="password" placeholder="Пароль" required />
+					<i class="bx bxs-lock-alt"></i>
+				</div>
+
+				<button class="btn" type="submit" onclick="checkInputsAndRedirect();">  <!-- зименил btn на button-->
+					Зарегистрироваться
+				</button>
+
+				<!-- <script type="module" src="reg.js"></script> -->
+			</form>
+		</div>
+		<script>
+			
+				
+
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+						//по сути здесь должна быть проверка на наличие этих записей в уже готовом jsone-е
+
+
+
+
+
+						//локальная запись
+						localStorage.setItem('Name', document.getElementById('username').value)
+  					localStorage.setItem('Pas', document.getElementById('password').value)
+					  //чтение и запись в json на сервере
+            event.preventDefault();
+
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+						//запрашиваю с сервера
+						// fetch('user_data.json')
+						// .then(response => {
+						// 	if (!response.ok) {
+						// 		throw new Error('Network response was not ok');
+						// 	}
+						// 	return response.json(); // Этот метод автоматически парсит JSON
+						// })
+						// .then(obj => {
+						// 	// Теперь вы можете работать с объектом obj
+						// 	const object = JSON.parse(obj)
+						// })
+						// .catch(error => {
+						// 	console.error('There has been a problem with your fetch operation:', error);
+						// });
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/register", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                username: username,
+                password: password
+            }));
+        });
+    </script>
+	</body>
+</html>

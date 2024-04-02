@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Форма логина и пароля</title>
+		<link rel="stylesheet" href="style.css" />
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<script>
+			function checkInputsAndRedirect() {
+				let username = document.getElementById('username').value
+				let password = document.getElementById('password').value
+				
+				if (username && password) {
+					// Если поля заполнены, переходим на запрос Json с сервера
+					fetch('./user_data.json')
+						.then(response => {
+							if (!response.ok) {
+								throw new Error('Network response was not ok');
+							}
+							return response.json(); // Этот метод автоматически парсит JSON
+						})
+						.then(obj => {
+							
+							// Теперь вы можете работать с объектом obj
+							
+							if(obj[username].toString === password.toString){
+								window.location.href = 'index2.html'
+							}else{
+								alert('Пароль или логин неверен')
+							}
+						})
+						.catch(error => {
+							console.error('There has been a problem with your fetch operation:', error);
+						});	
+				} else {
+					// Если нет, выводим сообщение об ошибке
+					alert('Пожалуйста, заполните поля имени пользователя и пароля.')
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<form action="" onsubmit="return false;">
+				<h1>Авторизация</h1>
+
+				<div class="input-box">
+					<input
+						type="text"
+						id="username"
+						placeholder="Имя пользователя"
+						required
+					/>
+					<i class="bx bx-user"></i>
+				</div>
+
+				<div class="input-box">
+					<input type="password" id="password" placeholder="Пароль" required />
+					<i class="bx bxs-lock-alt"></i>
+				</div>
+				
+				<div class="remember">
+					<label for=""><input type="checkbox" />Запомнить меня</label>
+					<a href="indexPasReminder.html">Забыли пароль?</a>
+				</div>
+
+				<button type="submit" class="btn" onclick="checkInputsAndRedirect();">
+					Войти
+				</button>
+
+				<div class="registry-link">
+					<p>
+						Нету аккаунта?
+						<a href="indexRegister.html">Ссылка для регистрации</a>
+						
+						
+					</p>
+				</div>
+			</form>
+			<script>
+				
+			</script>
+		</div>
+	</body>
+</html>

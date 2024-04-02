@@ -1,0 +1,109 @@
+app.get("/indexMAIL.html", (req, res) => {
+  res.sendFile(path.join(__dirname, './public/indexMAIL.html'));
+});
+
+app.post("/api/feedback", async (req, res) => {
+  try {
+    const transporter = nodemailer.createTransport({
+      host: "smtp.mail.ru",
+      port: 465,
+      secure: true,
+      auth: {
+        user: "tested2244@mail.ru",
+        pass: "9JHqH3ZWTryrXxSFVKSs",
+      },
+    });
+
+    const { name, phone, message, email } = req.body;
+    //var sendmail = document.getElementById('email').textContent;
+    
+
+    await transporter.sendMail({
+      
+      from: "tested2244@mail.ru",
+      to: email,//"skufidon141@gmail.com",
+      subject: `${name} (${phone})`,
+      text: message,
+      html: `
+        <p>${name}</p>
+        <p>${phone}</p>
+        <p>${message}</p>
+        `,
+    });
+
+    return res.status(200).send({ status: 200, message: "Success" });
+  } catch (e) {
+    return res
+      .status(500)
+      .send({ status: 500, message: "Internal server error" });
+  }
+});
+
+//////////////////////////////////////////////////////////////////////////////////
+ //const data = readFileSync('./users.json', {encoding:'utf8'});
+
+  // fs.readFile('./users.json', 'utf8', (err, data) => {
+  // if (err) {
+  //   console.error(err);
+  //   return;
+  // }
+  //     // Преобразование считанной строки в объект JavaScript
+  //     // Теперь вы можете работать с объектом Datajson
+  //     const Datajson = JSON.parse(data);
+  // });
+
+  // Использование fetch API для получения файла
+  fetch('./users.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Этот метод автоматически парсит JSON
+    })
+    .then(obj => {
+      // Теперь вы можете работать с объектом obj
+      const Datajson = JSON.parse(data);
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+    });
+
+  //let Datajson =JSON.parse(data)
+  Datajson.nameUser = passwordUser;
+
+  writeFileSync('./users.json', JSON.stringify(Datajson), {encoding:'utf8',flag:'w'});
+  console.log(users);
+
+
+
+							console.log(typeof(obj))
+							console.log(this.username.toString())
+							console.log(this.username)
+							console.log(document.getElementById('username').value.toString()); 
+
+							console.log(Object.key(obj))
+
+							console.log(Object.values(obj))
+							console.log(obj[username])
+
+
+
+
+
+
+
+
+
+
+			#navbar {
+				a:hover {
+					color: #0e0af0; /* Цвет текста ссылок при наведении курсора */
+					text-decoration: underline; /* Добавляем подчёркивание при наведении */
+					font-weight: bold; /* Делаем текст жирным */
+				}
+				position: fixed; /* Фиксированное позиционирование элемента на странице */
+				top: 0; /* Расположение панели навигации в самом верху страницы */
+				width: 100%; /* Панель навигации будет растянута на всю ширину страницы */
+				z-index: 100; /* Устанавливает слой, на котором будет находиться панель навигации */
+				/* Добавьте другие стили, такие как background, padding и т.д., если это необходимо */
+			}
